@@ -1,0 +1,76 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "id": "kathmandu",
+    "label": "Kathmandu flood area",
+    "status": "demonstration",
+    "maxGuidanceMeters": 15000,
+    "bbox": {
+      "minLatitude": 27.60,
+      "maxLatitude": 27.82,
+      "minLongitude": 85.20,
+      "maxLongitude": 85.45
+    },
+    "source": "Demonstration geographic dataset for the Kathmandu valley prototype. Open spaces follow publicly documented assembly areas (Tudikhel / Ratna Park, Dasharath Stadium, Shankha Park). The flood polygon is a demonstration hazard around the replay coordinates, not a live NDMA or NRA flood layer."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "demo-flood-bagmati",
+        "kind": "hazard",
+        "name": "Demonstration flood area",
+        "disaster": "flood"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [85.3200, 27.7140],
+          [85.3330, 27.7140],
+          [85.3330, 27.7250],
+          [85.3200, 27.7250],
+          [85.3200, 27.7140]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tudikhel",
+        "kind": "safer",
+        "name": "Tudikhel / Ratna Park",
+        "type": "open_space"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.3160, 27.7015]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dasharath-stadium",
+        "kind": "safer",
+        "name": "Dasharath Stadium",
+        "type": "open_space"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.3150, 27.6950]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shankha-park",
+        "kind": "safer",
+        "name": "Shankha Park",
+        "type": "open_space"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.3440, 27.7215]
+      }
+    }
+  ]
+}

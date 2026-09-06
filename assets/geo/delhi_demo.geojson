@@ -1,0 +1,79 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "id": "delhi",
+    "label": "Delhi area",
+    "status": "demonstration",
+    "maxGuidanceMeters": 15000,
+    "bbox": {
+      "minLatitude": 28.40,
+      "maxLatitude": 28.88,
+      "minLongitude": 76.84,
+      "maxLongitude": 77.35
+    },
+    "source": "Demonstration geographic dataset for the Delhi NCR prototype. Open spaces are OSM-derived public parks and lawns (India Gate lawns, Nehru Park, Lodhi Garden). The Yamuna-side polygon is a labeled demonstration flood area, not an official NDMA flood layer."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "demo-flood-yamuna",
+        "kind": "hazard",
+        "name": "Demonstration Yamuna flood area",
+        "disaster": "flood"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [77.2480, 28.5980],
+          [77.2780, 28.5980],
+          [77.2780, 28.6550],
+          [77.2480, 28.6550],
+          [77.2480, 28.5980]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "india-gate-lawns",
+        "kind": "safer",
+        "name": "India Gate lawns",
+        "type": "open_space",
+        "status": "demonstration"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.2295, 28.6129]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "nehru-park",
+        "kind": "safer",
+        "name": "Nehru Park",
+        "type": "open_space",
+        "status": "demonstration"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.1890, 28.5920]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lodhi-garden",
+        "kind": "safer",
+        "name": "Lodhi Garden",
+        "type": "open_space",
+        "status": "demonstration"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.2197, 28.5931]
+      }
+    }
+  ]
+}

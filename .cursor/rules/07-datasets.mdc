@@ -1,0 +1,88 @@
+---
+description: "Authoritative rules for Aarogya research datasets, preprocessing, splits, and training-data hygiene."
+globs: "DATASETS.md,data/**/*,ml/**/*,**/*.{py,ipynb,csv,hea,dat,onnx,tflite}"
+alwaysApply: false
+---
+
+# Aarogya Dataset Rules
+
+DATASETS.md is authoritative for the current prototype datasets.
+
+Read DATASETS.md before loading, parsing, splitting, training, or evaluating research data.
+
+## Current Datasets
+
+The current research datasets are:
+
+1. Non-EEG Dataset for Assessment of Neurological Status (PhysioNet)
+2. Wearable Device Dataset using Empatica E4
+
+Inspect actual files before implementing dataset-specific parsing.
+
+Never invent:
+
+- Columns
+- Labels
+- Sampling frequencies
+- Subject counts
+- Medical outcomes
+
+## Data Separation
+
+Keep these classes of data separate:
+
+- Raw
+- Processed
+- Features
+- Simulated application replay
+- Synthetic
+
+Never modify original raw datasets in place.
+
+Never silently mix synthetic data with real physiological recordings.
+
+Preserve dataset provenance and version.
+
+Record preprocessing parameters and experiment metadata.
+
+## Splits
+
+Use subject-level splits when evaluating cross-subject generalization.
+
+Do not randomly split windows from the same person across train and test for that evaluation.
+
+Prevent train/test leakage.
+
+If evaluating within-subject personalization, document that experiment separately.
+
+## Medical Scope
+
+These datasets contain healthy participants and controlled protocols.
+
+They are not clinical validation datasets.
+
+Do not make diagnostic claims from these datasets.
+
+Do not describe them as datasets for disease diagnosis, medical emergencies, dehydration, respiratory distress, disaster survivors, or clinical deterioration.
+
+## Missing Capabilities
+
+Fall detection requires a separate dataset.
+
+Do not implement fall detection from these two datasets. They do not contain appropriate fall labels.
+
+Disaster Mode and Survival Mode data requires separate data or clearly marked simulation.
+
+Do not fabricate labels for capabilities these datasets do not contain.
+
+## Production Inference
+
+Production inference must safely handle missing, noisy, or unavailable sensors.
+
+Every model prediction used by the app must have a defined fallback for missing or unreliable sensor data.
+
+Keep ML training separate from the Flutter mobile application.
+
+Export validated models to a mobile-compatible format such as ONNX or TensorFlow Lite.
+
+Store preprocessing parameters with model metadata.

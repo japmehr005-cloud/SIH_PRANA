@@ -1,0 +1,257 @@
+---
+description: "Testing, verification, and prototype reliability rules for Aarogya."
+alwaysApply: false
+---
+
+# Aarogya Testing Rules
+
+## General Requirement
+
+A feature is not complete because its UI works.
+
+A feature is complete when:
+
+• Domain logic works
+• State transitions work
+• Error states work
+• Offline behavior works
+• Localization works
+• Relevant tests pass
+• Application builds successfully
+
+## State Machine Tests
+
+Test:
+
+NORMAL
+→ DISASTER_ALERT
+
+DISASTER_ALERT
+→ DISASTER_ACTIVE
+
+DISASTER_ACTIVE
+→ SURVIVAL
+
+SURVIVAL
+→ EMERGENCY_EVENT
+
+EMERGENCY_EVENT
+→ RESOLVED
+
+Also test invalid transitions.
+
+## Personal Baseline Tests
+
+Test:
+
+• Normal readings
+• Small deviations
+• Large deviations
+• Missing readings
+• Insufficient historical data
+• Baseline initialization
+• Baseline updates
+
+Ensure that the system does not produce a risk result when insufficient data exists unless a documented fallback exists.
+
+## Fall Detection Tests
+
+Test:
+
+• Realistic fall sequence
+• Running
+• Jumping
+• Sitting quickly
+• Dropping phone
+• Sudden movement
+• Fall followed by movement
+• Fall followed by prolonged immobility
+
+The goal is to reduce false positives in the prototype.
+
+## Offline Tests
+
+Disable internet and verify:
+
+• App opens
+• Normal health data remains accessible
+• Local inference works
+• Disaster guidance works
+• Survival monitoring works
+• Emergency event is created
+• Emergency event is persisted
+• Emergency packet remains queued
+
+## Connectivity Recovery
+
+Start offline.
+
+Create emergency event.
+
+Restore connectivity.
+
+Verify:
+
+Event is detected as pending.
+
+Event enters queue.
+
+Transmission occurs.
+
+Delivery is confirmed.
+
+Event is not duplicated.
+
+## Communication Tests
+
+Test:
+
+Device A
+→ Device B
+
+Device B
+→ Device C
+
+Device C
+→ connected node
+
+Also test:
+
+• Duplicate messages
+• Expired messages
+• Invalid messages
+• Interrupted transmission
+• Reconnection
+
+## Localization Tests
+
+Every user facing string must exist in:
+
+English
+Hindi
+
+Test:
+
+• Normal dashboard
+• Disaster Mode
+• Survival Mode
+• Alerts
+• Dialogs
+• Error messages
+• Empty states
+• Permission messages
+
+Test Hindi layout for overflow.
+
+## UI Tests
+
+Test:
+
+• Small screens
+• Large screens
+• Dark/system configurations if supported
+• Long Hindi text
+• Offline state
+• Loading state
+• Error state
+• Critical state
+
+## Accessibility
+
+Check:
+
+• Contrast
+• Font size
+• Touch target size
+• Screen reader labels where applicable
+• Color-independent status communication
+
+## Demo Tests
+
+The complete SIH demonstration must work using the actual application pipeline.
+
+Required sequence:
+
+1. Normal Mode
+2. Personal baseline
+3. Flood trigger
+4. Disaster Mode
+5. Internet disabled
+6. Offline guidance
+7. Local communication
+8. Survival Mode
+9. Physiological deterioration simulation
+10. Fall simulation
+11. Emergency event creation
+12. Local storage
+13. Connectivity restoration
+14. Emergency packet transmission
+15. Rescue dashboard
+
+## Simulation Integrity
+
+A simulator may generate sensor data.
+
+It must not bypass:
+
+• Preprocessing
+• AI inference
+• Risk engine
+• State machine
+• Emergency logic
+
+Bad:
+
+simulateFall()
+→ setEmergency(true)
+
+Good:
+
+simulateFall()
+→ sensor stream
+→ fall model
+→ risk engine
+→ emergency state
+
+## Build Verification
+
+Before considering a feature complete:
+
+Run:
+
+• Formatter
+• Static analysis
+• Unit tests
+• Integration tests where applicable
+• Application build
+
+Do not leave known build errors unresolved.
+
+## Regression
+
+When changing shared components, test all affected modes.
+
+A change to Normal Mode must not accidentally break:
+
+• Disaster Mode
+• Survival Mode
+• Localization
+• Emergency state
+• Offline behavior
+
+## Test Data
+
+Use deterministic replay datasets for the primary demonstration.
+
+Recommended:
+
+normal.csv
+flood_exertion.csv
+health_deterioration.csv
+fall.csv
+
+These files are synthetic demonstration replay datasets. They are separate from the research datasets in DATASETS.md.
+
+Keep demo data versioned and documented.
+
+Do not use real personal health data in the repository.

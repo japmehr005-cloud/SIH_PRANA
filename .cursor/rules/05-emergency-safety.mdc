@@ -1,0 +1,228 @@
+---
+description: "Emergency UX, disaster behavior, offline operation, and safety requirements."
+globs: "**/*.{dart,kt,java,ts,tsx}"
+alwaysApply: false
+---
+
+# Aarogya Emergency Safety Rules
+
+## Emergency Priority
+
+During an emergency, the application prioritizes:
+
+1. Immediate safety instruction
+2. Current emergency state
+3. User location
+4. Critical health information
+5. Communication state
+6. Battery state
+7. Secondary information
+
+Do not allow decorative UI to compete with emergency information.
+
+## Disaster Activation
+
+Disaster Mode may be activated through:
+
+• Official warning
+• Supported local detection
+• User activation
+
+Local detection must only be implemented for scenarios where there is a technically defensible signal.
+
+Never claim universal automatic disaster detection.
+
+## Disaster Specific Guidance
+
+Guidance must depend on the disaster type.
+
+Flood:
+
+• Move toward a suitable safer location.
+• Avoid moving water.
+• Avoid flooded electrical areas.
+• Follow known evacuation guidance where available.
+
+Do not tell users that higher altitude is automatically safe.
+
+Fire:
+
+• Prioritize evacuation.
+• Avoid smoke exposure.
+• Avoid elevators where appropriate.
+• Follow known evacuation routes.
+
+Heat wave:
+
+• Reduce unnecessary physical exertion.
+• Move to a cooler safe location.
+• Hydrate when appropriate and safe.
+• Monitor changing physical condition.
+
+Cyclone:
+
+• Follow official evacuation instructions.
+• Stay away from windows and exposed areas.
+• Remain in a structurally safer location.
+
+These instructions must be reviewed before being presented as production emergency guidance.
+
+## Offline Operation
+
+When internet is unavailable:
+
+Continue:
+
+• Local inference
+• Local monitoring
+• Local emergency state
+• Local event creation
+• Local event storage
+• Previously downloaded guidance
+• Previously downloaded maps
+• Local communication where available
+
+Clearly show connectivity state.
+
+## Emergency Packets
+
+Emergency packets should contain minimum necessary information.
+
+Possible fields:
+
+• Event type
+• Timestamp
+• Location if permitted
+• Relevant health readings
+• Risk level
+• Battery state
+• Last known movement
+• Device identifier where necessary
+
+Do not attach the user's entire health history.
+
+## Emergency Packet States
+
+Use explicit states:
+
+CREATED
+STORED
+QUEUED
+TRANSMITTING
+SENT
+DELIVERY_CONFIRMED
+FAILED
+
+Never show:
+
+"Emergency sent"
+
+unless delivery is actually confirmed.
+
+If stored locally:
+
+"Emergency event saved on this device."
+
+## Store and Forward
+
+If communication is unavailable:
+
+Create event
+→ store locally
+→ monitor connectivity
+→ queue event
+→ attempt transmission
+→ confirm delivery
+
+Retry logic must avoid sending duplicate events unnecessarily.
+
+Use event IDs for deduplication.
+
+## Local Communication
+
+Local device communication should be designed behind an abstraction.
+
+Possible technologies:
+
+• BLE
+• Wi-Fi Direct
+• Other supported local transports
+
+Messages should have:
+
+• Unique ID
+• Timestamp
+• Origin
+• Hop information where required
+• Expiry
+• Integrity verification where appropriate
+
+Prevent indefinite message forwarding.
+
+## Battery
+
+Disaster and Survival Mode must consider battery.
+
+Avoid unnecessary:
+
+• Network scans
+• GPS polling
+• Screen updates
+• Sensor sampling
+• Model inference
+
+Critical monitoring should receive priority.
+
+## Fall Confirmation
+
+When a possible fall occurs:
+
+1. Detect possible fall.
+2. Notify user.
+3. Allow a response period.
+4. If no response and conditions support escalation, create an emergency event.
+5. Continue monitoring.
+
+Do not immediately declare every acceleration spike an emergency.
+
+## Location
+
+Location must require appropriate permission.
+
+If location is unavailable:
+
+Do not invent it.
+
+Display:
+
+"Location unavailable."
+
+The system may use the last known location only when clearly labeled.
+
+## Emergency Claims
+
+Never guarantee:
+
+• Rescue
+• Medical treatment
+• Network availability
+• Emergency response time
+• Survival
+
+Aarogya assists the user and provides information.
+
+It does not control emergency services.
+
+## Human Safety
+
+If the system is uncertain, it should communicate uncertainty.
+
+Examples:
+
+"Possible fall detected."
+
+"Possible elevated risk detected."
+
+"Connectivity unavailable. Emergency event saved locally."
+
+Never provide false certainty.

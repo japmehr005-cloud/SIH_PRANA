@@ -1,0 +1,185 @@
+---
+description: "Core product rules for Aarogya. Apply to all project work."
+alwaysApply: true
+---
+
+# Aarogya Core Rules
+
+Read PROJECT.md before making major product or architectural decisions.
+
+Read DATASETS.md before making dataset, training, or evaluation decisions.
+
+## Product Identity
+
+Aarogya is a professional Personal Health and Disaster Companion.
+
+The product has three primary modes:
+
+1. Normal Mode
+2. Disaster Mode
+3. Survival Mode
+
+The product must preserve this three mode architecture.
+
+The primary demonstration scenario is a sudden Nepal style flash flood.
+
+The system should remain general enough to support:
+• Floods
+• Fires
+• Heat waves
+• Cyclones
+• Pollution events
+• Other supported emergencies
+
+Do not turn Aarogya into a generic fitness application.
+
+Do not turn Aarogya into a disease diagnosis application.
+
+Do not add unrelated AI features merely because they are technically interesting.
+
+## Product Lifecycle
+
+NORMAL
+→ personalized health baseline
+
+DISASTER
+→ local disaster warning and safety guidance
+
+SURVIVAL
+→ stranded user monitoring and rescue assistance
+
+Each mode must have a clearly defined purpose.
+
+## Core USPs
+
+Aarogya's three primary USPs are:
+
+1. Personalized Health Intelligence
+2. Decentralized Disaster Intelligence
+3. Survivor Health and Rescue Intelligence
+
+New features should strengthen at least one of these.
+
+## Offline First
+
+Critical functionality must work without internet connectivity.
+
+Never make the following dependent on a cloud round trip:
+
+• Risk inference
+• Fall detection
+• Local health monitoring
+• Emergency event creation
+• Emergency event storage
+• Previously downloaded disaster guidance
+• Previously downloaded maps
+• Local device communication
+
+Cloud services may provide optional synchronization, remote dashboards, analytics, or message relay.
+
+## Privacy
+
+Health information should remain on the device by default.
+
+Transmit only information that is necessary for a clearly defined purpose.
+
+Never log sensitive health data unnecessarily.
+
+Never commit:
+• API keys
+• Passwords
+• Tokens
+• Private certificates
+• Personal health records
+• Real user location history
+
+## Medical Positioning
+
+Aarogya is a risk detection and emergency assistance system.
+
+It is not a medical diagnostic system.
+
+Use:
+
+"Elevated health risk detected."
+
+"Your readings differ significantly from your usual baseline."
+
+"Possible fall detected."
+
+"Emergency event recorded."
+
+Do not use unsupported statements such as:
+
+"You have a heart attack."
+
+"You are definitely dehydrated."
+
+"You have a medical condition."
+
+"This system will save your life."
+
+Never invent clinical accuracy claims.
+
+## Engineering Quality
+
+Do not create fake functionality simply to make a screen appear complete.
+
+A demo simulation is acceptable when it passes through the real application pipeline.
+
+Correct:
+
+Sensor simulator
+→ preprocessing
+→ inference
+→ risk engine
+→ state machine
+→ UI
+
+Incorrect:
+
+Button
+→ manually change UI
+→ pretend AI detected event
+
+Keep simulated inputs isolated from production sensor implementations.
+
+## Dependencies
+
+Do not add a dependency without a concrete reason.
+
+Before adding a package, determine:
+
+• What problem it solves
+• Whether the existing stack can solve the problem
+• Whether it works offline where required
+• Whether it supports Android
+• Whether it supports the intended deployment architecture
+• Whether it introduces unnecessary complexity
+
+## Existing Code
+
+Before changing an existing feature:
+
+1. Inspect the existing implementation.
+2. Understand its dependencies.
+3. Identify the smallest required change.
+4. Preserve working behavior.
+5. Test after modification.
+
+Do not rewrite large sections of the application unnecessarily.
+
+## Product Scope
+
+If a proposed feature does not support:
+
+• Normal health monitoring
+• Disaster response
+• Survivor assistance
+• Privacy
+• Offline operation
+• Emergency communication
+
+question whether it belongs in Aarogya.
+
+The primary goal is a convincing, technically credible SIH prototype.

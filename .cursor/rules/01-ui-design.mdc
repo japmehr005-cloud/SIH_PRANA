@@ -1,0 +1,314 @@
+---
+description: "Professional public service UI standards for Aarogya."
+globs: "**/*.dart"
+alwaysApply: false
+---
+
+# Aarogya UI Design Rules
+
+## Overall Visual Direction
+
+Aarogya must look like a professionally designed Indian public service application.
+
+The visual direction may take general inspiration from established government digital services, including the clarity and restraint of Aarogya Setu.
+
+Do NOT copy Aarogya Setu.
+
+Do not copy:
+
+• Logo
+• Exact screens
+• Branding
+• Government emblems
+• Proprietary assets
+• Illustrations
+• Exact layouts
+
+Aarogya must have its own visual identity.
+
+## Design Character
+
+The application should feel:
+
+• Professional
+• Calm
+• Trustworthy
+• Accessible
+• Modern
+• Information focused
+• Appropriate for public use
+
+It should NOT feel:
+
+• Like a fitness startup
+• Like a gaming application
+• Like an AI generated dashboard
+• Like a template
+• Like a cryptocurrency application
+• Like a social media application
+
+## Color
+
+Use a restrained color system.
+
+Preferred foundation:
+
+• White
+• Light neutral surfaces
+• Dark text
+• Green or teal primary accent
+
+Use warning colors intentionally:
+
+• Amber for warnings
+• Red for critical states
+• Green for safe states
+
+Do not use excessive colors.
+
+Do not use neon colors.
+
+Do not use gradients unless there is a strong documented reason.
+
+## Typography
+
+Typography must establish hierarchy.
+
+Use:
+
+• Clear page titles
+• Strong section headings
+• Readable body text
+• Large values for important health metrics
+• Smaller secondary metadata
+
+Do not use excessive font weights.
+
+Do not use decorative fonts.
+
+## Cards
+
+Cards should be used when they improve information grouping.
+
+Do not put every element inside a rounded card.
+
+Avoid:
+
+• Giant rounded containers
+• Excessive border radius
+• Card inside card inside card
+• Floating UI everywhere
+
+## Spacing
+
+Use a consistent spacing system.
+
+Do not manually invent arbitrary spacing values for every screen.
+
+Maintain consistent:
+
+• Page margins
+• Section spacing
+• Card padding
+• Button heights
+• Text spacing
+
+## Icons
+
+Use a consistent icon library.
+
+Icons must have a clear semantic purpose.
+
+Do not use emojis as interface icons.
+
+Do not mix unrelated icon styles.
+
+## NO EMOJIS
+
+Aarogya's application UI must contain ZERO emojis.
+
+Do not use:
+
+❤️
+⚠️
+🚨
+🏥
+🔥
+💧
+or similar emoji characters.
+
+Use proper icons instead.
+
+## Emergency UI
+
+Emergency screens must prioritize information over decoration.
+
+The user must immediately understand:
+
+1. What happened?
+2. How serious is it?
+3. What should I do?
+4. Is connectivity available?
+5. Is emergency information being transmitted?
+
+Critical information must be visible without scrolling whenever reasonably possible.
+
+## Normal Mode
+
+Normal Mode should feel calm.
+
+Show:
+
+• Health status
+• Personal baseline
+• Trends
+• Relevant metrics
+• Recommendations
+
+Do not overwhelm the user with medical statistics.
+
+## Disaster Mode
+
+Disaster Mode should visually distinguish itself from Normal Mode.
+
+Show:
+
+• Disaster type
+• Risk level
+• Immediate action
+• Location
+• Connectivity
+• Battery
+• Relevant map or safety information
+
+The interface should be urgent but controlled.
+
+## Survival Mode
+
+Survival Mode should remove unnecessary information.
+
+Prioritize:
+
+• Current risk
+• Current relevant vitals
+• Fall status
+• Movement
+• Location
+• Battery
+• Connectivity
+• Emergency state
+
+## Status Design
+
+Never communicate critical information using color alone.
+
+For example:
+
+BAD:
+
+Red background only.
+
+GOOD:
+
+CRITICAL
+Emergency event detected
+Possible fall detected
+
+with appropriate iconography and color.
+
+## Loading States
+
+Every asynchronous operation needs an appropriate loading state.
+
+Never leave a blank screen while data is loading.
+
+## Error States
+
+Errors must explain:
+
+• What went wrong
+• Whether the user can continue
+• What action they can take
+
+Avoid technical stack traces in the UI.
+
+## Offline States
+
+Offline status must be explicit.
+
+Example:
+
+"Internet unavailable"
+
+"Local monitoring active"
+
+"Emergency event stored on this device"
+
+Do not hide offline behavior.
+
+## Empty States
+
+Empty states must explain what the user can do next.
+
+Never use:
+
+"No data."
+
+Prefer:
+
+"No health history available yet."
+
+"Continue using Aarogya to establish your personal baseline."
+
+## Animations
+
+Use animation sparingly.
+
+Appropriate:
+
+• Screen transitions
+• Loading indicators
+• State changes
+• Risk transitions
+
+Avoid:
+
+• Decorative floating animations
+• Excessive bouncing
+• Particle effects
+• Animated gradients
+• Unnecessary motion
+
+The product must remain professional.
+
+## Copywriting
+
+Use short, factual sentences.
+
+Good:
+
+"Possible fall detected."
+
+"Connectivity unavailable."
+
+"Emergency event saved locally."
+
+"Your current readings differ from your usual baseline."
+
+Bad:
+
+"Your AI guardian noticed something!"
+
+"Don't worry, we've got you!"
+
+"Your super intelligent AI is protecting you!"
+
+Do not use marketing language inside the application.
+
+## Consistency
+
+Build reusable components.
+
+Do not create a completely different visual system for every screen.
+
+Every screen should look like it belongs to Aarogya.

@@ -1,0 +1,45 @@
+{
+  "version": "fall-window-v1",
+  "dataset": "sisfall",
+  "split": "GroupKFold-subject",
+  "threshold": 0.5,
+  "n_windows": 36040,
+  "n_subjects": 38,
+  "sensitivity": 0.33284508489722964,
+  "specificity": 0.8280329337247169,
+  "precision": 0.5621985245990102,
+  "f1": 0.41667901215287084,
+  "folds": [
+    {
+      "sensitivity": 0.2613333333333333,
+      "precision": 0.5548478414720452,
+      "specificity": 0.8467348927875243,
+      "f1": 0.3553138454566055
+    },
+    {
+      "sensitivity": 0.38866666666666666,
+      "precision": 0.618895966029724,
+      "specificity": 0.82470703125,
+      "f1": 0.4774774774774775
+    },
+    {
+      "sensitivity": 0.339142091152815,
+      "precision": 0.6100060277275468,
+      "specificity": 0.8417318982387475,
+      "f1": 0.43592504846004737
+    },
+    {
+      "sensitivity": 0.3413333333333333,
+      "precision": 0.5104685942173479,
+      "specificity": 0.779226618705036,
+      "f1": 0.4091090691170595
+    },
+    {
+      "sensitivity": 0.33375,
+      "precision": 0.516774193548387,
+      "specificity": 0.8477642276422764,
+      "f1": 0.40556962025316456
+    }
+  ],
+  "notes": "IMU fall versus ADL window features. Not clinical validation."
+}

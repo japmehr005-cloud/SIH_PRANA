@@ -1,0 +1,234 @@
+---
+description: "Architecture and implementation rules for Aarogya."
+globs: "**/*.{dart,kt,java,py,ts,tsx}"
+alwaysApply: false
+---
+
+# Aarogya Architecture Rules
+
+## Architectural Principle
+
+Separate the application into clear layers.
+
+Presentation
+↓
+Application / State
+↓
+Domain
+↓
+Data
+↓
+Sensors / Communication / Storage / Edge AI
+
+Business logic must not live inside UI widgets.
+
+## Recommended Modules
+
+The application should conceptually contain:
+
+• onboarding
+• localization
+• health
+• baseline
+• sensors
+• edge_ai
+• disaster
+• survival
+• emergency
+• communication
+• location
+• maps
+• settings
+
+The exact folder structure may change if there is a strong architectural reason.
+
+## Domain Layer
+
+Domain logic should not depend directly on:
+
+• Flutter widgets
+• Android UI
+• Network clients
+• Specific sensor SDKs
+• Specific database implementations
+
+Use interfaces where appropriate.
+
+Examples:
+
+HealthRepository
+
+SensorSource
+
+InferenceEngine
+
+LocationService
+
+ConnectivityService
+
+EmergencyRepository
+
+CommunicationTransport
+
+## Sensor Abstraction
+
+Real sensors and simulated sensors must use the same interface.
+
+Example:
+
+SensorSource
+├── WearableSensorSource
+├── DeviceSensorSource
+└── SimulatedSensorSource
+
+The domain layer should not care which implementation provides the data.
+
+## Edge AI Abstraction
+
+Inference should be behind an interface.
+
+Example:
+
+InferenceEngine
+
+Implementations can include:
+
+LocalInferenceEngine
+
+MockInferenceEngine
+
+The UI must not directly invoke model files.
+
+## Disaster State Machine
+
+Emergency states must be explicit.
+
+Suggested model:
+
+NORMAL
+→ DISASTER_ALERT
+→ DISASTER_ACTIVE
+→ SURVIVAL
+→ EMERGENCY_EVENT
+→ RESOLVED
+
+The exact implementation may differ.
+
+State transitions must be centralized.
+
+Do not scatter state flags such as:
+
+isFlood
+
+isEmergency
+
+isSurvival
+
+isFall
+
+across unrelated widgets.
+
+## State Integrity
+
+An active emergency must survive:
+
+• Screen changes
+• App backgrounding
+• Temporary connectivity loss
+• Language changes
+• Sensor reconnection
+
+Where required, emergency state must be persisted locally.
+
+## Offline First
+
+Critical paths must have local implementations.
+
+Network availability should be treated as an enhancement, not a prerequisite.
+
+Example:
+
+BAD:
+
+Risk calculation
+→ API
+→ Risk result
+
+GOOD:
+
+Sensor data
+→ local preprocessing
+→ local inference
+→ local risk result
+
+## Persistence
+
+Use local structured storage for:
+
+• User baseline
+• Health history
+• Emergency events
+• Disaster state
+• Pending emergency packets
+• User preferences
+• Localization preference
+
+Sensitive information must not be stored unnecessarily.
+
+## Networking
+
+Network services should be isolated.
+
+Do not call HTTP APIs directly from UI widgets.
+
+Use repository/service abstractions.
+
+Every network operation must have:
+
+• timeout
+• failure handling
+• offline handling
+• retry strategy where appropriate
+
+## Communication
+
+Create an abstraction for emergency communication.
+
+Example:
+
+CommunicationTransport
+
+Possible implementations:
+
+• InternetTransport
+• BLETransport
+• WiFiDirectTransport
+• SimulatedTransport
+
+This allows the SIH prototype to demonstrate local communication without locking the entire architecture to one technology.
+
+## Dependency Injection
+
+Use predictable dependency injection.
+
+Do not create global mutable singletons unless there is a clear reason.
+
+## Error Handling
+
+Failures must be explicit.
+
+Do not silently swallow exceptions.
+
+Do not silently replace missing sensor data with zero.
+
+Represent missing data explicitly.
+
+## Build Quality
+
+After significant architectural changes:
+
+1. Format code.
+2. Run static analysis.
+3. Run relevant tests.
+4. Build the application.
+5. Fix errors before moving to the next feature.

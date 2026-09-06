@@ -1,0 +1,126 @@
+---
+description: "English and Hindi localization standards for Aarogya."
+globs: "**/*.{dart,arb,json}"
+alwaysApply: false
+---
+
+# Aarogya Localization Rules
+
+## Supported Languages
+
+Aarogya must support:
+
+1. English
+2. Hindi
+
+Hindi must use proper Devanagari script.
+
+Do not use Hinglish for Hindi UI.
+
+Example:
+
+Correct:
+
+"संभावित गिरने की घटना का पता चला"
+
+Incorrect:
+
+"Possible fall detect hua"
+
+## No Hard Coded User Text
+
+Do not hard code user facing strings directly inside:
+
+• Widgets
+• Business logic
+• Services
+• State classes
+• Error handlers
+
+Use localization keys.
+
+## Localization Structure
+
+Every user facing English string should have a corresponding Hindi translation.
+
+Example:
+
+health_status
+English:
+"Health Status"
+
+Hindi:
+"स्वास्थ्य स्थिति"
+
+## Emergency Translation
+
+Emergency messages must remain concise.
+
+English:
+
+"Possible fall detected."
+
+Hindi:
+
+"संभावित गिरने की घटना का पता चला।"
+
+English:
+
+"Connectivity unavailable."
+
+Hindi:
+
+"कनेक्टिविटी उपलब्ध नहीं है।"
+
+## Technical Terms
+
+Do not translate:
+
+• Code identifiers
+• Database field names
+• API fields
+• Enum identifiers
+• File names
+• Internal model names
+
+User facing technical terms should use understandable Hindi where appropriate.
+
+## Language Switching
+
+Changing language must not:
+
+• Reset application state
+• Delete data
+• Exit Disaster Mode
+• Exit Survival Mode
+• Cancel emergency monitoring
+• Delete emergency events
+
+If the user changes language during an emergency, the active emergency state must continue.
+
+## Layout Testing
+
+Hindi text can occupy different amounts of space.
+
+Test:
+
+• Buttons
+• Cards
+• Navigation
+• Alerts
+• Dialogs
+• Long instructions
+• Emergency screens
+
+Never assume English text width.
+
+## Accessibility
+
+Hindi and English text must maintain:
+
+• Readability
+• Adequate font size
+• Adequate contrast
+• Proper line spacing
+
+Do not solve Hindi overflow by making the font extremely small.

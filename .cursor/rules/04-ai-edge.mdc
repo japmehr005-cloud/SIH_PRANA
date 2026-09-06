@@ -1,0 +1,233 @@
+---
+description: "Rules for Aarogya health risk AI, personalized baseline intelligence, and on device inference."
+globs: "**/*.{py,dart,json,onnx,tflite}"
+alwaysApply: false
+---
+
+# Aarogya Edge AI Rules
+
+## AI Purpose
+
+Aarogya uses AI for:
+
+• Personalized baseline deviation
+• Health risk detection
+• Physiological deterioration detection
+• Fall detection
+• Disaster-context risk assessment
+
+The AI must not be presented as a general disease diagnosis system.
+
+## Personal Baseline
+
+The personal baseline is a first class component.
+
+The system should learn relevant normal patterns for the individual.
+
+Potential baseline variables:
+
+• Resting HR
+• Typical SpO₂
+• Typical activity
+• Typical sleep
+• Temperature where available
+• Typical movement patterns
+
+Do not assume that a single fixed threshold defines risk for every user.
+
+## Baseline Calculation
+
+Baseline logic must be:
+
+• Deterministic where possible
+• Explainable
+• Testable
+• Versioned
+
+Do not make baseline behavior hidden inside a black box unnecessarily.
+
+## Sensor Fusion
+
+Where appropriate, combine:
+
+Physiological data
++
+Behavioral data
++
+Environmental data
++
+Personal baseline
++
+Disaster context
+
+Example:
+
+High HR alone may indicate exercise.
+
+High HR
++
+low movement
++
+elevated temperature
++
+high humidity
++
+large deviation from baseline
+
+can indicate elevated risk.
+
+Do not claim that this combination proves a medical condition.
+
+## Risk Levels
+
+Use explicit risk levels:
+
+LOW
+MODERATE
+HIGH
+CRITICAL
+
+Risk level must have documented interpretation.
+
+Avoid arbitrary thresholds without documentation.
+
+## Explainability
+
+Where technically possible, the application should provide reasons for a risk state.
+
+Example:
+
+"Heart rate is significantly above your usual baseline."
+
+"Prolonged physical activity detected."
+
+"SpO₂ has decreased from your recent baseline."
+
+Do not expose raw model mathematics to normal users unless useful.
+
+## Fall Detection
+
+A fall detector should consider a sequence rather than a single acceleration spike.
+
+Potential sequence:
+
+Acceleration spike
+→ impact
+→ orientation change
+→ inactivity
+
+The system should minimize false positives from:
+
+• Jumping
+• Dropping the phone
+• Running
+• Sitting quickly
+• Normal exercise
+
+A possible fall should trigger confirmation before declaring a critical event when circumstances permit.
+
+## Physiological Deterioration
+
+The system should evaluate changes over time.
+
+Do not rely only on a single sensor reading.
+
+Use time windows where appropriate.
+
+Example:
+
+60 second window
+
+5 minute trend
+
+Recent baseline deviation
+
+The exact windows must be validated through testing.
+
+## Missing Data
+
+Sensors can fail.
+
+If SpO₂ is unavailable:
+
+Do not assume SpO₂ = 0.
+
+Do not invent a reading.
+
+Mark it unavailable.
+
+Risk logic must understand missing data.
+
+## Model Metadata
+
+Every deployed model should have:
+
+• Name
+• Version
+• Input schema
+• Output schema
+• Preprocessing version
+• Training dataset identifier
+• Evaluation results
+• Target runtime
+
+## Model Performance
+
+Measure:
+
+• Inference latency
+• Memory usage
+• Model size
+• CPU usage where practical
+• Battery impact where practical
+
+Do not invent these numbers.
+
+## Edge Deployment
+
+Models should run locally whenever the feature is classified as critical.
+
+Preferred deployment technologies:
+
+• ONNX Runtime Mobile
+• TensorFlow Lite
+
+Final technology should be chosen based on actual model requirements.
+
+## Synthetic Data
+
+Synthetic/replayed sensor data is acceptable during prototype development.
+
+It must be labeled clearly as simulation data.
+
+Synthetic data must not be presented as clinical evidence.
+
+Research datasets and their allowed uses are defined in DATASETS.md.
+
+Never silently mix synthetic replay data with real physiological recordings.
+
+## No Fake AI
+
+Do not create a UI that claims AI detected something when the model did not.
+
+For a demo:
+
+Simulated sensor stream
+→ actual preprocessing
+→ actual inference
+→ actual risk engine
+→ actual application state
+
+The simulation should exercise the real pipeline.
+
+## Clinical Claims
+
+Never invent:
+
+• Diagnostic accuracy
+• Sensitivity
+• Specificity
+• Clinical validation
+• Patient outcomes
+
+unless supported by actual testing and appropriate evidence.
