@@ -1,0 +1,2 @@
+# Linux builders fail on CRLF bash scripts (Vercel is Linux).
+*.sh text eol=lf

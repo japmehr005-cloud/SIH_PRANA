@@ -76,6 +76,9 @@ Thumbs.db
 Desktop.ini
 .playwright-mcp/
 
+# Local Vercel link metadata
+.vercel/
+
 # Secrets — never commit service-role or personal keys
 .env
 .env.*

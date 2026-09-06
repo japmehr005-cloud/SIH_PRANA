@@ -28,7 +28,7 @@ SUPABASE_URL=https://YOUR_PROJECT.supabase.co
 SUPABASE_ANON_KEY=YOUR_PUBLISHABLE_ANON_KEY
 ```
 
-`tool/vercel_build.sh` forwards those environment variables into the web build.
+`tool/vercel_build.sh` forwards those environment variables into the web build when they are set. Both are optional. Leave them unset for the offline/local-account demo.
 
 ## Row Level Security
 

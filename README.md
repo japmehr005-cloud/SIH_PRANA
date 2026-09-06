@@ -140,16 +140,45 @@ The app ships small labeled demonstration CSVs in `assets/demo/` and model JSON 
 
 Research recordings (Non-EEG, Empatica E4, SisFall) are **not** part of the git payload. Obtain them from the sources listed in [DATASETS.md](DATASETS.md) if you need to retrain. Training scripts live in `ml/`. Subject splits used by tests live in `data/splits/`.
 
-## Deployment
+## Deployment (Vercel)
 
-[vercel.json](vercel.json) serves `build/web` with an SPA rewrite. [tool/vercel_build.sh](tool/vercel_build.sh) can run the Flutter web build on Vercel.
+The production site is a static Flutter Web build. Vercel clones this repository, runs [tool/vercel_build.sh](tool/vercel_build.sh), and serves `build/web`.
 
-Optional compile-time defines (publishable only):
+[vercel.json](vercel.json) sets:
 
-```text
-SUPABASE_URL
-SUPABASE_ANON_KEY
+- Framework: Other (`null`)
+- Install: skip npm (this is not a Node app)
+- Build: `bash tool/vercel_build.sh`
+- Output: `build/web`
+- SPA rewrite to `index.html` so a refresh of `/login` still boots the app
+- Hash routes (`/#/login`, `/#/assistant`, …) never need the rewrite; the browser keeps the fragment
+
+The build script installs Flutter **3.47.2** on the Linux builder when Flutter is not already on `PATH`, then runs the same release command used locally:
+
+```bash
+flutter build web --release --no-web-resources-cdn
 ```
+
+### Import the GitHub repository
+
+1. In Vercel, **Add New… → Project** and import `japmehr005-cloud/SIH_PRANA`.
+2. Confirm the root directory is the repository root.
+3. Leave Framework as Other. `vercel.json` supplies the build and output settings.
+4. Do **not** add a service-role key or any private credential.
+5. Deploy. The first build clones Flutter and may take several minutes.
+
+Production and preview deployments use the same offline/local-account demo. Supabase is not required.
+
+### Optional environment variables
+
+Set these in the Vercel project only if you want optional cloud sync. They are **build-time** dart-defines (not browser secrets beyond the public anon key). Leave both empty for the offline demo.
+
+| Name | Required | Purpose |
+|---|---|---|
+| `SUPABASE_URL` | No | Publishable Supabase project URL |
+| `SUPABASE_ANON_KEY` | No | Publishable / anon key only |
+
+Never set a Supabase service-role key, database password, or private API key on Vercel.
 
 Copy [.env.example](.env.example) for local placeholders. Never commit a service-role key, password, or private certificate.
 

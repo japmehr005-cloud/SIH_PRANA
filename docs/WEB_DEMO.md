@@ -78,12 +78,12 @@ The deployed browser demo uses a **local account registry** (SharedPreferences /
 
 See [supabase/README.md](../supabase/README.md) if you later add a project. Only the publishable/anon key is ever shipped.
 
-Vercel build (`tool/vercel_build.sh`) passes:
+Vercel build (`tool/vercel_build.sh`) forwards these **optional** build-time variables:
 
 - `SUPABASE_URL`
 - `SUPABASE_ANON_KEY`
 
-Set those as Vercel project environment variables for Production and Preview.
+Leave both unset for the offline/local-account demo. If you add them later, set them as Vercel project environment variables for Production and Preview. Never add a service-role key.
 
 ## Remaining limitations
 
