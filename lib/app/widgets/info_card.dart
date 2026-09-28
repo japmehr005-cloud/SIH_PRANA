@@ -1,3 +1,4 @@
+import 'package:aarogya/app/widgets/prana_chrome.dart';
 import 'package:aarogya/core/theme/aarogya_spacing.dart';
 import 'package:flutter/material.dart';
 
@@ -8,11 +9,9 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(AarogyaSpacing.md),
-        child: child,
-      ),
+    return PranaCard(
+      padding: const EdgeInsets.all(AarogyaSpacing.md),
+      child: child,
     );
   }
 }

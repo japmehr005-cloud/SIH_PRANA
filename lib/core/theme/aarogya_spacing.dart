@@ -5,6 +5,6 @@ abstract final class AarogyaSpacing {
   static const double lg = 24;
   static const double xl = 32;
   static const double page = 20;
-  static const double cardRadius = 8;
+  static const double cardRadius = 16;
   static const double buttonHeight = 48;
 }

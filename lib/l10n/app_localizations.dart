@@ -2577,7 +2577,7 @@ abstract class AppLocalizations {
   /// No description provided for @assistantNav.
   ///
   /// In en, this message translates to:
-  /// **'Assistant'**
+  /// **'PRANA AI'**
   String get assistantNav;
 
   /// No description provided for @moreNav.
@@ -2861,6 +2861,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Uses session state, disaster guidance, and location guidance on this device. Does not call a cloud language model.'**
   String get assistantTechnicalBody;
+
+  /// No description provided for @disasterNav.
+  ///
+  /// In en, this message translates to:
+  /// **'Disaster'**
+  String get disasterNav;
+
+  /// No description provided for @survivalNav.
+  ///
+  /// In en, this message translates to:
+  /// **'Survival'**
+  String get survivalNav;
+
+  /// No description provided for @devicesNav.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices'**
+  String get devicesNav;
+
+  /// No description provided for @chartNeedsReadings.
+  ///
+  /// In en, this message translates to:
+  /// **'Charts appear after PRANA has stored recent readings on this device.'**
+  String get chartNeedsReadings;
+
+  /// No description provided for @heartRateTrend.
+  ///
+  /// In en, this message translates to:
+  /// **'Heart rate trend'**
+  String get heartRateTrend;
+
+  /// No description provided for @activityMix.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity mix from recent readings'**
+  String get activityMix;
+
+  /// No description provided for @officialReports.
+  ///
+  /// In en, this message translates to:
+  /// **'Official information'**
+  String get officialReports;
+
+  /// No description provided for @userReports.
+  ///
+  /// In en, this message translates to:
+  /// **'User-generated information'**
+  String get userReports;
+
+  /// No description provided for @officialReportsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This is a demonstration official flood warning on this device. It is not a live government feed.'**
+  String get officialReportsHint;
+
+  /// No description provided for @noOfficialWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'No official warning is active on this device.'**
+  String get noOfficialWarning;
+
+  /// No description provided for @noUserReports.
+  ///
+  /// In en, this message translates to:
+  /// **'No user-generated emergency information has been received on this device.'**
+  String get noUserReports;
+
+  /// No description provided for @activateOfficialFlood.
+  ///
+  /// In en, this message translates to:
+  /// **'Activate demonstration flood warning'**
+  String get activateOfficialFlood;
+
+  /// No description provided for @officialVsUserHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Official information comes from a supported warning on this device. User-generated information is from nearby PRANA users or a note you add here.'**
+  String get officialVsUserHint;
+
+  /// No description provided for @addLocalNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a local situation note'**
+  String get addLocalNote;
+
+  /// No description provided for @localNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored only on this account. Labeled as user-generated, not official.'**
+  String get localNoteHint;
+
+  /// No description provided for @localNoteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Situation note'**
+  String get localNoteLabel;
+
+  /// No description provided for @saveLocalNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Save note'**
+  String get saveLocalNote;
+
+  /// No description provided for @localNotesHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Your local notes'**
+  String get localNotesHeading;
+
+  /// No description provided for @thisDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'This device'**
+  String get thisDevice;
+
+  /// No description provided for @heartRateAccessory.
+  ///
+  /// In en, this message translates to:
+  /// **'Heart-rate accessory'**
+  String get heartRateAccessory;
+
+  /// No description provided for @accessoryConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected'**
+  String get accessoryConnected;
+
+  /// No description provided for @accessoryNotConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Not connected'**
+  String get accessoryNotConnected;
+
+  /// No description provided for @accessoryUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available in this browser'**
+  String get accessoryUnsupported;
+
+  /// No description provided for @sourceDemonstration.
+  ///
+  /// In en, this message translates to:
+  /// **'Demonstration data'**
+  String get sourceDemonstration;
+
+  /// No description provided for @sourceLive.
+  ///
+  /// In en, this message translates to:
+  /// **'Device sensors'**
+  String get sourceLive;
+
+  /// No description provided for @emergencyContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency contacts'**
+  String get emergencyContacts;
+
+  /// No description provided for @noEmergencyContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'No emergency contacts saved for this account.'**
+  String get noEmergencyContacts;
+
+  /// No description provided for @addEmergencyContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Add contact'**
+  String get addEmergencyContact;
+
+  /// No description provided for @contactName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get contactName;
+
+  /// No description provided for @contactPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get contactPhone;
+
+  /// No description provided for @removeContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get removeContact;
+
+  /// No description provided for @contactsStayLocal.
+  ///
+  /// In en, this message translates to:
+  /// **'Contacts stay on this device for this account. PRANA does not place the call for you.'**
+  String get contactsStayLocal;
+
+  /// No description provided for @greetingNamed.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, {name}'**
+  String greetingNamed(String name);
+
+  /// No description provided for @usualRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Usual {low}–{high}'**
+  String usualRange(String low, String high);
+
+  /// No description provided for @comparedWithUsual.
+  ///
+  /// In en, this message translates to:
+  /// **'Compared with usual'**
+  String get comparedWithUsual;
+
+  /// No description provided for @withinUsual.
+  ///
+  /// In en, this message translates to:
+  /// **'Close to usual'**
+  String get withinUsual;
+
+  /// No description provided for @differsFromUsual.
+  ///
+  /// In en, this message translates to:
+  /// **'Differs from usual'**
+  String get differsFromUsual;
+
+  /// No description provided for @noBaselineYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No usual range yet'**
+  String get noBaselineYet;
+
+  /// No description provided for @disasterGuidanceHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Safety guidance'**
+  String get disasterGuidanceHeading;
+
+  /// No description provided for @saferPlaceHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Safer location'**
+  String get saferPlaceHeading;
+
+  /// No description provided for @survivalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'After disaster / Survival'**
+  String get survivalTitle;
+
+  /// No description provided for @devicesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices and contacts'**
+  String get devicesTitle;
+
+  /// No description provided for @baselineTableUsual.
+  ///
+  /// In en, this message translates to:
+  /// **'Usual range'**
+  String get baselineTableUsual;
+
+  /// No description provided for @baselineTableNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get baselineTableNow;
 }
 
 class _AppLocalizationsDelegate

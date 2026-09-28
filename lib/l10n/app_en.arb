@@ -481,7 +481,7 @@
   "assistantSend": "Send",
   "askPranaAssistant": "Ask PRANA Assistant",
   "healthNav": "Health",
-  "assistantNav": "Assistant",
+  "assistantNav": "PRANA AI",
   "moreNav": "More",
   "openHealth": "Open Health",
   "continueDemonstration": "Continue demonstration",
@@ -543,5 +543,60 @@
     }
   },
   "assistantTechnicalTitle": "On-device assistant",
-  "assistantTechnicalBody": "Uses session state, disaster guidance, and location guidance on this device. Does not call a cloud language model."
+  "assistantTechnicalBody": "Uses session state, disaster guidance, and location guidance on this device. Does not call a cloud language model.",
+  "disasterNav": "Disaster",
+  "survivalNav": "Survival",
+  "devicesNav": "Devices",
+  "chartNeedsReadings": "Charts appear after PRANA has stored recent readings on this device.",
+  "heartRateTrend": "Heart rate trend",
+  "activityMix": "Activity mix from recent readings",
+  "officialReports": "Official information",
+  "userReports": "User-generated information",
+  "officialReportsHint": "This is a demonstration official flood warning on this device. It is not a live government feed.",
+  "noOfficialWarning": "No official warning is active on this device.",
+  "noUserReports": "No user-generated emergency information has been received on this device.",
+  "activateOfficialFlood": "Activate demonstration flood warning",
+  "officialVsUserHint": "Official information comes from a supported warning on this device. User-generated information is from nearby PRANA users or a note you add here.",
+  "addLocalNote": "Add a local situation note",
+  "localNoteHint": "Stored only on this account. Labeled as user-generated, not official.",
+  "localNoteLabel": "Situation note",
+  "saveLocalNote": "Save note",
+  "localNotesHeading": "Your local notes",
+  "thisDevice": "This device",
+  "heartRateAccessory": "Heart-rate accessory",
+  "accessoryConnected": "Connected",
+  "accessoryNotConnected": "Not connected",
+  "accessoryUnsupported": "Not available in this browser",
+  "sourceDemonstration": "Demonstration data",
+  "sourceLive": "Device sensors",
+  "emergencyContacts": "Emergency contacts",
+  "noEmergencyContacts": "No emergency contacts saved for this account.",
+  "addEmergencyContact": "Add contact",
+  "contactName": "Name",
+  "contactPhone": "Phone",
+  "removeContact": "Remove",
+  "contactsStayLocal": "Contacts stay on this device for this account. PRANA does not place the call for you.",
+  "greetingNamed": "Hello, {name}",
+  "@greetingNamed": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "usualRange": "Usual {low}–{high}",
+  "@usualRange": {
+    "placeholders": {
+      "low": {"type": "String"},
+      "high": {"type": "String"}
+    }
+  },
+  "comparedWithUsual": "Compared with usual",
+  "withinUsual": "Close to usual",
+  "differsFromUsual": "Differs from usual",
+  "noBaselineYet": "No usual range yet",
+  "disasterGuidanceHeading": "Safety guidance",
+  "saferPlaceHeading": "Safer location",
+  "survivalTitle": "After disaster / Survival",
+  "devicesTitle": "Devices and contacts",
+  "baselineTableUsual": "Usual range",
+  "baselineTableNow": "Now"
 }

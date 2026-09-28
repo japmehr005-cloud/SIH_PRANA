@@ -1359,7 +1359,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get healthNav => 'Health';
 
   @override
-  String get assistantNav => 'Assistant';
+  String get assistantNav => 'PRANA AI';
 
   @override
   String get moreNav => 'More';
@@ -1528,4 +1528,148 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get assistantTechnicalBody =>
       'Uses session state, disaster guidance, and location guidance on this device. Does not call a cloud language model.';
+
+  @override
+  String get disasterNav => 'Disaster';
+
+  @override
+  String get survivalNav => 'Survival';
+
+  @override
+  String get devicesNav => 'Devices';
+
+  @override
+  String get chartNeedsReadings =>
+      'Charts appear after PRANA has stored recent readings on this device.';
+
+  @override
+  String get heartRateTrend => 'Heart rate trend';
+
+  @override
+  String get activityMix => 'Activity mix from recent readings';
+
+  @override
+  String get officialReports => 'Official information';
+
+  @override
+  String get userReports => 'User-generated information';
+
+  @override
+  String get officialReportsHint =>
+      'This is a demonstration official flood warning on this device. It is not a live government feed.';
+
+  @override
+  String get noOfficialWarning =>
+      'No official warning is active on this device.';
+
+  @override
+  String get noUserReports =>
+      'No user-generated emergency information has been received on this device.';
+
+  @override
+  String get activateOfficialFlood => 'Activate demonstration flood warning';
+
+  @override
+  String get officialVsUserHint =>
+      'Official information comes from a supported warning on this device. User-generated information is from nearby PRANA users or a note you add here.';
+
+  @override
+  String get addLocalNote => 'Add a local situation note';
+
+  @override
+  String get localNoteHint =>
+      'Stored only on this account. Labeled as user-generated, not official.';
+
+  @override
+  String get localNoteLabel => 'Situation note';
+
+  @override
+  String get saveLocalNote => 'Save note';
+
+  @override
+  String get localNotesHeading => 'Your local notes';
+
+  @override
+  String get thisDevice => 'This device';
+
+  @override
+  String get heartRateAccessory => 'Heart-rate accessory';
+
+  @override
+  String get accessoryConnected => 'Connected';
+
+  @override
+  String get accessoryNotConnected => 'Not connected';
+
+  @override
+  String get accessoryUnsupported => 'Not available in this browser';
+
+  @override
+  String get sourceDemonstration => 'Demonstration data';
+
+  @override
+  String get sourceLive => 'Device sensors';
+
+  @override
+  String get emergencyContacts => 'Emergency contacts';
+
+  @override
+  String get noEmergencyContacts =>
+      'No emergency contacts saved for this account.';
+
+  @override
+  String get addEmergencyContact => 'Add contact';
+
+  @override
+  String get contactName => 'Name';
+
+  @override
+  String get contactPhone => 'Phone';
+
+  @override
+  String get removeContact => 'Remove';
+
+  @override
+  String get contactsStayLocal =>
+      'Contacts stay on this device for this account. PRANA does not place the call for you.';
+
+  @override
+  String greetingNamed(String name) {
+    return 'Hello, $name';
+  }
+
+  @override
+  String usualRange(String low, String high) {
+    return 'Usual $low–$high';
+  }
+
+  @override
+  String get comparedWithUsual => 'Compared with usual';
+
+  @override
+  String get withinUsual => 'Close to usual';
+
+  @override
+  String get differsFromUsual => 'Differs from usual';
+
+  @override
+  String get noBaselineYet => 'No usual range yet';
+
+  @override
+  String get disasterGuidanceHeading => 'Safety guidance';
+
+  @override
+  String get saferPlaceHeading => 'Safer location';
+
+  @override
+  String get survivalTitle => 'After disaster / Survival';
+
+  @override
+  String get devicesTitle => 'Devices and contacts';
+
+  @override
+  String get baselineTableUsual => 'Usual range';
+
+  @override
+  String get baselineTableNow => 'Now';
 }

@@ -4,9 +4,11 @@ import 'package:aarogya/features/auth/presentation/account_screen.dart';
 import 'package:aarogya/features/auth/presentation/login_screen.dart';
 import 'package:aarogya/features/auth/presentation/register_screen.dart';
 import 'package:aarogya/features/demo/presentation/demo_screen.dart';
+import 'package:aarogya/features/devices/presentation/devices_screen.dart';
+import 'package:aarogya/features/disaster/presentation/disaster_screen.dart';
 import 'package:aarogya/features/health/presentation/home_overview_screen.dart';
 import 'package:aarogya/features/health/presentation/home_screen.dart';
-import 'package:aarogya/features/rescue/presentation/rescue_dashboard_screen.dart';
+import 'package:aarogya/features/rescue/presentation/survival_screen.dart';
 import 'package:aarogya/features/settings/presentation/settings_screen.dart';
 import 'package:aarogya/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +18,10 @@ final class AppPaths {
   static const home = '/';
   static const health = '/health';
   static const assistant = '/assistant';
+  static const disaster = '/disaster';
   static const demo = '/demo';
   static const rescue = '/rescue';
+  static const devices = '/devices';
   static const account = '/account';
   static const settings = '/settings';
   static const login = '/login';
@@ -76,14 +80,6 @@ GoRouter createRouter({AccountService? accounts}) {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppPaths.health,
-                builder: (context, state) => const HomeScreen(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
                 path: AppPaths.assistant,
                 builder: (context, state) => const AssistantScreen(),
               ),
@@ -92,8 +88,32 @@ GoRouter createRouter({AccountService? accounts}) {
           StatefulShellBranch(
             routes: [
               GoRoute(
+                path: AppPaths.disaster,
+                builder: (context, state) => const DisasterScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
                 path: AppPaths.rescue,
-                builder: (context, state) => const RescueDashboardScreen(),
+                builder: (context, state) => const SurvivalScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppPaths.devices,
+                builder: (context, state) => const DevicesScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppPaths.health,
+                builder: (context, state) => const HomeScreen(),
               ),
             ],
           ),
@@ -128,16 +148,16 @@ class AppScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final wide = MediaQuery.sizeOf(context).width >= 900;
+    final primaryIndex = navigationShell.currentIndex <= 4
+        ? navigationShell.currentIndex
+        : 5;
     if (!wide) {
-      final primaryIndex = navigationShell.currentIndex <= 3
-          ? navigationShell.currentIndex
-          : 4;
       return Scaffold(
         body: navigationShell,
         bottomNavigationBar: NavigationBar(
           selectedIndex: primaryIndex,
           onDestinationSelected: (index) {
-            if (index < 4) {
+            if (index < 5) {
               navigationShell.goBranch(index);
             } else {
               _showMore(context, l10n);
@@ -149,16 +169,20 @@ class AppScaffold extends StatelessWidget {
               label: l10n.home,
             ),
             NavigationDestination(
-              icon: const Icon(Icons.monitor_heart_outlined),
-              label: l10n.healthNav,
-            ),
-            NavigationDestination(
-              icon: const Icon(Icons.help_outline),
+              icon: const Icon(Icons.auto_awesome_outlined),
               label: l10n.assistantNav,
             ),
             NavigationDestination(
+              icon: const Icon(Icons.warning_amber_outlined),
+              label: l10n.disasterNav,
+            ),
+            NavigationDestination(
               icon: const Icon(Icons.health_and_safety_outlined),
-              label: l10n.rescue,
+              label: l10n.survivalNav,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.devices_outlined),
+              label: l10n.devicesNav,
             ),
             NavigationDestination(
               icon: const Icon(Icons.menu),
@@ -173,8 +197,14 @@ class AppScaffold extends StatelessWidget {
       body: Row(
         children: [
           NavigationRail(
-            selectedIndex: navigationShell.currentIndex,
-            onDestinationSelected: navigationShell.goBranch,
+            selectedIndex: primaryIndex,
+            onDestinationSelected: (index) {
+              if (index < 5) {
+                navigationShell.goBranch(index);
+              } else {
+                _showMore(context, l10n);
+              }
+            },
             labelType: NavigationRailLabelType.all,
             destinations: [
               NavigationRailDestination(
@@ -182,24 +212,24 @@ class AppScaffold extends StatelessWidget {
                 label: Text(l10n.home),
               ),
               NavigationRailDestination(
-                icon: const Icon(Icons.monitor_heart_outlined),
-                label: Text(l10n.healthNav),
-              ),
-              NavigationRailDestination(
-                icon: const Icon(Icons.help_outline),
+                icon: const Icon(Icons.auto_awesome_outlined),
                 label: Text(l10n.assistantNav),
               ),
               NavigationRailDestination(
+                icon: const Icon(Icons.warning_amber_outlined),
+                label: Text(l10n.disasterNav),
+              ),
+              NavigationRailDestination(
                 icon: const Icon(Icons.health_and_safety_outlined),
-                label: Text(l10n.rescue),
+                label: Text(l10n.survivalNav),
               ),
               NavigationRailDestination(
-                icon: const Icon(Icons.person_outline),
-                label: Text(l10n.accountNav),
+                icon: const Icon(Icons.devices_outlined),
+                label: Text(l10n.devicesNav),
               ),
               NavigationRailDestination(
-                icon: const Icon(Icons.settings_outlined),
-                label: Text(l10n.settings),
+                icon: const Icon(Icons.menu),
+                label: Text(l10n.moreNav),
               ),
             ],
           ),
@@ -219,11 +249,19 @@ class AppScaffold extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
+                leading: const Icon(Icons.monitor_heart_outlined),
+                title: Text(l10n.healthNav),
+                onTap: () {
+                  Navigator.pop(context);
+                  navigationShell.goBranch(5);
+                },
+              ),
+              ListTile(
                 leading: const Icon(Icons.person_outline),
                 title: Text(l10n.accountNav),
                 onTap: () {
                   Navigator.pop(context);
-                  navigationShell.goBranch(4);
+                  navigationShell.goBranch(6);
                 },
               ),
               ListTile(
@@ -231,7 +269,7 @@ class AppScaffold extends StatelessWidget {
                 title: Text(l10n.settings),
                 onTap: () {
                   Navigator.pop(context);
-                  navigationShell.goBranch(5);
+                  navigationShell.goBranch(7);
                 },
               ),
               ListTile(

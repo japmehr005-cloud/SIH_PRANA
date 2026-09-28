@@ -481,7 +481,7 @@
   "assistantSend": "भेजें",
   "askPranaAssistant": "PRANA सहायक से पूछें",
   "healthNav": "स्वास्थ्य",
-  "assistantNav": "सहायक",
+  "assistantNav": "PRANA AI",
   "moreNav": "और",
   "openHealth": "स्वास्थ्य खोलें",
   "continueDemonstration": "प्रदर्शन जारी रखें",
@@ -543,5 +543,60 @@
     }
   },
   "assistantTechnicalTitle": "उपकरण पर सहायक",
-  "assistantTechnicalBody": "सत्र स्थिति, आपदा मार्गदर्शन और स्थान मार्गदर्शन इसी उपकरण पर उपयोग करता है। यह किसी क्लाउड भाषा मॉडल को नहीं बुलाता।"
+  "assistantTechnicalBody": "सत्र स्थिति, आपदा मार्गदर्शन और स्थान मार्गदर्शन इसी उपकरण पर उपयोग करता है। यह किसी क्लाउड भाषा मॉडल को नहीं बुलाता।",
+  "disasterNav": "आपदा",
+  "survivalNav": "जीवित रहना",
+  "devicesNav": "उपकरण",
+  "chartNeedsReadings": "इस उपकरण पर हाल की रीडिंग संग्रहित होने के बाद चार्ट दिखेंगे।",
+  "heartRateTrend": "हृदय गति प्रवृत्ति",
+  "activityMix": "हाल की रीडिंग से गतिविधि मिश्रण",
+  "officialReports": "आधिकारिक जानकारी",
+  "userReports": "उपयोगकर्ता द्वारा दी गई जानकारी",
+  "officialReportsHint": "यह इस उपकरण पर एक प्रदर्शन आधिकारिक बाढ़ चेतावनी है। यह जीवित सरकारी फ़ीड नहीं है।",
+  "noOfficialWarning": "इस उपकरण पर कोई आधिकारिक चेतावनी सक्रिय नहीं है।",
+  "noUserReports": "इस उपकरण पर कोई उपयोगकर्ता आपातकालीन जानकारी प्राप्त नहीं हुई है।",
+  "activateOfficialFlood": "प्रदर्शन बाढ़ चेतावनी सक्रिय करें",
+  "officialVsUserHint": "आधिकारिक जानकारी इस उपकरण पर समर्थित चेतावनी से आती है। उपयोगकर्ता जानकारी निकटवर्ती PRANA उपयोगकर्ताओं या आपके नोट से आती है।",
+  "addLocalNote": "स्थानीय स्थिति नोट जोड़ें",
+  "localNoteHint": "केवल इस खाते पर संग्रहित। आधिकारिक नहीं, उपयोगकर्ता द्वारा दी गई जानकारी के रूप में चिह्नित।",
+  "localNoteLabel": "स्थिति नोट",
+  "saveLocalNote": "नोट सहेजें",
+  "localNotesHeading": "आपके स्थानीय नोट",
+  "thisDevice": "यह उपकरण",
+  "heartRateAccessory": "हृदय गति सहायक उपकरण",
+  "accessoryConnected": "कनेक्टेड",
+  "accessoryNotConnected": "कनेक्ट नहीं",
+  "accessoryUnsupported": "इस ब्राउज़र में उपलब्ध नहीं",
+  "sourceDemonstration": "प्रदर्शन डेटा",
+  "sourceLive": "उपकरण सेंसर",
+  "emergencyContacts": "आपातकालीन संपर्क",
+  "noEmergencyContacts": "इस खाते के लिए कोई आपातकालीन संपर्क सहेजा नहीं गया।",
+  "addEmergencyContact": "संपर्क जोड़ें",
+  "contactName": "नाम",
+  "contactPhone": "फ़ोन",
+  "removeContact": "हटाएँ",
+  "contactsStayLocal": "संपर्क इसी उपकरण पर इसी खाते के लिए रहते हैं। PRANA आपके लिए कॉल नहीं करता।",
+  "greetingNamed": "नमस्ते, {name}",
+  "@greetingNamed": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "usualRange": "सामान्य {low}–{high}",
+  "@usualRange": {
+    "placeholders": {
+      "low": {"type": "String"},
+      "high": {"type": "String"}
+    }
+  },
+  "comparedWithUsual": "सामान्य से तुलना",
+  "withinUsual": "सामान्य के निकट",
+  "differsFromUsual": "सामान्य से भिन्न",
+  "noBaselineYet": "अभी कोई सामान्य सीमा नहीं",
+  "disasterGuidanceHeading": "सुरक्षा मार्गदर्शन",
+  "saferPlaceHeading": "सुरक्षित स्थान",
+  "survivalTitle": "आपदा के बाद / जीवित रहना",
+  "devicesTitle": "उपकरण और संपर्क",
+  "baselineTableUsual": "सामान्य सीमा",
+  "baselineTableNow": "अब"
 }

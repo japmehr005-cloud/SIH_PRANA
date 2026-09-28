@@ -1359,7 +1359,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get healthNav => 'स्वास्थ्य';
 
   @override
-  String get assistantNav => 'सहायक';
+  String get assistantNav => 'PRANA AI';
 
   @override
   String get moreNav => 'और';
@@ -1524,4 +1524,148 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get assistantTechnicalBody =>
       'सत्र स्थिति, आपदा मार्गदर्शन और स्थान मार्गदर्शन इसी उपकरण पर उपयोग करता है। यह किसी क्लाउड भाषा मॉडल को नहीं बुलाता।';
+
+  @override
+  String get disasterNav => 'आपदा';
+
+  @override
+  String get survivalNav => 'जीवित रहना';
+
+  @override
+  String get devicesNav => 'उपकरण';
+
+  @override
+  String get chartNeedsReadings =>
+      'इस उपकरण पर हाल की रीडिंग संग्रहित होने के बाद चार्ट दिखेंगे।';
+
+  @override
+  String get heartRateTrend => 'हृदय गति प्रवृत्ति';
+
+  @override
+  String get activityMix => 'हाल की रीडिंग से गतिविधि मिश्रण';
+
+  @override
+  String get officialReports => 'आधिकारिक जानकारी';
+
+  @override
+  String get userReports => 'उपयोगकर्ता द्वारा दी गई जानकारी';
+
+  @override
+  String get officialReportsHint =>
+      'यह इस उपकरण पर एक प्रदर्शन आधिकारिक बाढ़ चेतावनी है। यह जीवित सरकारी फ़ीड नहीं है।';
+
+  @override
+  String get noOfficialWarning =>
+      'इस उपकरण पर कोई आधिकारिक चेतावनी सक्रिय नहीं है।';
+
+  @override
+  String get noUserReports =>
+      'इस उपकरण पर कोई उपयोगकर्ता आपातकालीन जानकारी प्राप्त नहीं हुई है।';
+
+  @override
+  String get activateOfficialFlood => 'प्रदर्शन बाढ़ चेतावनी सक्रिय करें';
+
+  @override
+  String get officialVsUserHint =>
+      'आधिकारिक जानकारी इस उपकरण पर समर्थित चेतावनी से आती है। उपयोगकर्ता जानकारी निकटवर्ती PRANA उपयोगकर्ताओं या आपके नोट से आती है।';
+
+  @override
+  String get addLocalNote => 'स्थानीय स्थिति नोट जोड़ें';
+
+  @override
+  String get localNoteHint =>
+      'केवल इस खाते पर संग्रहित। आधिकारिक नहीं, उपयोगकर्ता द्वारा दी गई जानकारी के रूप में चिह्नित।';
+
+  @override
+  String get localNoteLabel => 'स्थिति नोट';
+
+  @override
+  String get saveLocalNote => 'नोट सहेजें';
+
+  @override
+  String get localNotesHeading => 'आपके स्थानीय नोट';
+
+  @override
+  String get thisDevice => 'यह उपकरण';
+
+  @override
+  String get heartRateAccessory => 'हृदय गति सहायक उपकरण';
+
+  @override
+  String get accessoryConnected => 'कनेक्टेड';
+
+  @override
+  String get accessoryNotConnected => 'कनेक्ट नहीं';
+
+  @override
+  String get accessoryUnsupported => 'इस ब्राउज़र में उपलब्ध नहीं';
+
+  @override
+  String get sourceDemonstration => 'प्रदर्शन डेटा';
+
+  @override
+  String get sourceLive => 'उपकरण सेंसर';
+
+  @override
+  String get emergencyContacts => 'आपातकालीन संपर्क';
+
+  @override
+  String get noEmergencyContacts =>
+      'इस खाते के लिए कोई आपातकालीन संपर्क सहेजा नहीं गया।';
+
+  @override
+  String get addEmergencyContact => 'संपर्क जोड़ें';
+
+  @override
+  String get contactName => 'नाम';
+
+  @override
+  String get contactPhone => 'फ़ोन';
+
+  @override
+  String get removeContact => 'हटाएँ';
+
+  @override
+  String get contactsStayLocal =>
+      'संपर्क इसी उपकरण पर इसी खाते के लिए रहते हैं। PRANA आपके लिए कॉल नहीं करता।';
+
+  @override
+  String greetingNamed(String name) {
+    return 'नमस्ते, $name';
+  }
+
+  @override
+  String usualRange(String low, String high) {
+    return 'सामान्य $low–$high';
+  }
+
+  @override
+  String get comparedWithUsual => 'सामान्य से तुलना';
+
+  @override
+  String get withinUsual => 'सामान्य के निकट';
+
+  @override
+  String get differsFromUsual => 'सामान्य से भिन्न';
+
+  @override
+  String get noBaselineYet => 'अभी कोई सामान्य सीमा नहीं';
+
+  @override
+  String get disasterGuidanceHeading => 'सुरक्षा मार्गदर्शन';
+
+  @override
+  String get saferPlaceHeading => 'सुरक्षित स्थान';
+
+  @override
+  String get survivalTitle => 'आपदा के बाद / जीवित रहना';
+
+  @override
+  String get devicesTitle => 'उपकरण और संपर्क';
+
+  @override
+  String get baselineTableUsual => 'सामान्य सीमा';
+
+  @override
+  String get baselineTableNow => 'अब';
 }

@@ -93,8 +93,10 @@ Flutter Web uses hash routes. After launch:
 | Home | `/#/` |
 | Health | `/#/health` |
 | Assistant | `/#/assistant` |
+| Disaster | `/#/disaster` |
 | Continue demonstration | `/#/demo` |
-| Rescue | `/#/rescue` |
+| Survival | `/#/rescue` |
+| Devices | `/#/devices` |
 | Account | `/#/account` |
 | Settings | `/#/settings` |
 

@@ -22,7 +22,7 @@ ThemeData buildAarogyaTheme() {
       titleTextStyle: TextStyle(
         color: AarogyaColors.textPrimary,
         fontSize: 20,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
       ),
     ),
     cardTheme: CardThemeData(
@@ -39,14 +39,29 @@ ThemeData buildAarogyaTheme() {
       bodyColor: AarogyaColors.textPrimary,
       displayColor: AarogyaColors.textPrimary,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AarogyaColors.surface,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(13),
+        borderSide: const BorderSide(color: AarogyaColors.border),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(13),
+        borderSide: const BorderSide(color: AarogyaColors.border),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(13),
+        borderSide: const BorderSide(color: AarogyaColors.primary, width: 1.5),
+      ),
+    ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         minimumSize: const Size.fromHeight(AarogyaSpacing.buttonHeight),
         backgroundColor: AarogyaColors.primary,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AarogyaSpacing.cardRadius),
-        ),
+        textStyle: const TextStyle(fontWeight: FontWeight.w700),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
       ),
     ),
     navigationBarTheme: const NavigationBarThemeData(
@@ -64,9 +79,7 @@ ThemeData buildAarogyaTheme() {
         minimumSize: const Size.fromHeight(AarogyaSpacing.buttonHeight),
         foregroundColor: AarogyaColors.primary,
         side: const BorderSide(color: AarogyaColors.primary),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AarogyaSpacing.cardRadius),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
       ),
     ),
   );

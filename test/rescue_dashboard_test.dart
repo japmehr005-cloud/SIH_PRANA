@@ -42,7 +42,7 @@ void main() {
     await _pumpFrames(tester);
 
     final en = await AppLocalizations.delegate.load(const Locale('en'));
-    await tester.tap(find.text(en.rescue));
+    await tester.tap(find.text(en.survivalNav));
     await _pumpFrames(tester);
     expect(find.text(en.rescueEmptyHint), findsOneWidget);
 

@@ -33,98 +33,62 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final form = _LoginForm(
+      l10n: l10n,
+      loginId: _loginId,
+      password: _password,
+      error: _error,
+      busy: _busy,
+      onSubmit: _submit,
+      onRegister: () => context.go(AppPaths.register),
+      onDemo: _continueDemo,
+    );
     return Scaffold(
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 480),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(AarogyaSpacing.page),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: AarogyaSpacing.xl),
-                const BrandMark(height: 128),
-                const SizedBox(height: AarogyaSpacing.md),
-                Text(
-                  l10n.appTitle,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.w700),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final wide = constraints.maxWidth >= 800;
+          if (!wide) {
+            return Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 480),
+                child: ListView(
+                  padding: const EdgeInsets.all(AarogyaSpacing.page),
+                  children: [
+                    const SizedBox(height: AarogyaSpacing.xl),
+                    const BrandMark(height: 128),
+                    const SizedBox(height: AarogyaSpacing.md),
+                    form,
+                  ],
                 ),
-                Text(
-                  l10n.productTagline,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyMedium
-                      ?.copyWith(color: AarogyaColors.textSecondary),
-                ),
-                const SizedBox(height: AarogyaSpacing.sm),
-                Text(
-                  l10n.publicLandingBody,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: AarogyaSpacing.lg),
-                InfoCard(
-                  child: Column(
-                    children: [
-                      TextField(
-                        controller: _loginId,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          labelText: l10n.emailOrMobile,
-                        ),
-                      ),
-                      const SizedBox(height: AarogyaSpacing.md),
-                      TextField(
-                        controller: _password,
-                        obscureText: true,
-                        decoration: InputDecoration(labelText: l10n.password),
-                      ),
-                      if (_error != null) ...[
-                        const SizedBox(height: AarogyaSpacing.md),
-                        Text(
-                          _error!,
-                          style: const TextStyle(color: AarogyaColors.danger),
-                        ),
-                      ],
-                      const SizedBox(height: AarogyaSpacing.lg),
-                      SizedBox(
-                        width: double.infinity,
-                        height: AarogyaSpacing.buttonHeight,
-                        child: FilledButton(
-                          onPressed: _busy ? null : _submit,
-                          child: Text(l10n.signIn),
-                        ),
-                      ),
-                      const SizedBox(height: AarogyaSpacing.sm),
-                      Text(l10n.dontHaveAccount),
-                      TextButton(
-                        onPressed: () => context.go(AppPaths.register),
-                        child: Text(l10n.createAccount),
-                      ),
-                    ],
+              ),
+            );
+          }
+          return Row(
+            children: [
+              Expanded(
+                child: Container(
+                  color: AarogyaColors.primarySoft,
+                  padding: const EdgeInsets.all(AarogyaSpacing.xl),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [BrandMark(height: 180)],
                   ),
                 ),
-                const SizedBox(height: AarogyaSpacing.lg),
-                OutlinedButton(
-                  onPressed: _busy ? null : _continueDemo,
-                  child: Text(l10n.continueAsDemoUser),
+              ),
+              Expanded(
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 460),
+                    child: ListView(
+                      padding: const EdgeInsets.all(AarogyaSpacing.xl),
+                      children: [form],
+                    ),
+                  ),
                 ),
-                const SizedBox(height: AarogyaSpacing.sm),
-                Text(
-                  l10n.demoAccountHint,
-                  style: Theme.of(context).textTheme.bodySmall
-                      ?.copyWith(color: AarogyaColors.textSecondary),
-                ),
-                const SizedBox(height: AarogyaSpacing.md),
-                Text(
-                  l10n.dataStaysOnDevice,
-                  style: Theme.of(context).textTheme.bodySmall
-                      ?.copyWith(color: AarogyaColors.textSecondary),
-                ),
-              ],
-            ),
-          ),
-        ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -182,5 +146,107 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         setState(() => _busy = false);
       }
     }
+  }
+}
+
+class _LoginForm extends StatelessWidget {
+  const _LoginForm({
+    required this.l10n,
+    required this.loginId,
+    required this.password,
+    required this.error,
+    required this.busy,
+    required this.onSubmit,
+    required this.onRegister,
+    required this.onDemo,
+  });
+
+  final AppLocalizations l10n;
+  final TextEditingController loginId;
+  final TextEditingController password;
+  final String? error;
+  final bool busy;
+  final VoidCallback onSubmit;
+  final VoidCallback onRegister;
+  final VoidCallback onDemo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          l10n.appTitle,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineMedium
+              ?.copyWith(fontWeight: FontWeight.w800),
+        ),
+        Text(
+          l10n.productTagline,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyMedium
+              ?.copyWith(color: AarogyaColors.textSecondary),
+        ),
+        const SizedBox(height: AarogyaSpacing.sm),
+        Text(l10n.publicLandingBody, textAlign: TextAlign.center),
+        const SizedBox(height: AarogyaSpacing.lg),
+        InfoCard(
+          child: Column(
+            children: [
+              TextField(
+                controller: loginId,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(labelText: l10n.emailOrMobile),
+              ),
+              const SizedBox(height: AarogyaSpacing.md),
+              TextField(
+                controller: password,
+                obscureText: true,
+                decoration: InputDecoration(labelText: l10n.password),
+              ),
+              if (error != null) ...[
+                const SizedBox(height: AarogyaSpacing.md),
+                Text(
+                  error!,
+                  style: const TextStyle(color: AarogyaColors.danger),
+                ),
+              ],
+              const SizedBox(height: AarogyaSpacing.lg),
+              SizedBox(
+                width: double.infinity,
+                height: AarogyaSpacing.buttonHeight,
+                child: FilledButton(
+                  onPressed: busy ? null : onSubmit,
+                  child: Text(l10n.signIn),
+                ),
+              ),
+              const SizedBox(height: AarogyaSpacing.sm),
+              Text(l10n.dontHaveAccount),
+              TextButton(
+                onPressed: onRegister,
+                child: Text(l10n.createAccount),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: AarogyaSpacing.lg),
+        OutlinedButton(
+          onPressed: busy ? null : onDemo,
+          child: Text(l10n.continueAsDemoUser),
+        ),
+        const SizedBox(height: AarogyaSpacing.sm),
+        Text(
+          l10n.demoAccountHint,
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: AarogyaColors.textSecondary),
+        ),
+        const SizedBox(height: AarogyaSpacing.md),
+        Text(
+          l10n.dataStaysOnDevice,
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: AarogyaColors.textSecondary),
+        ),
+      ],
+    );
   }
 }

@@ -60,10 +60,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     ?.copyWith(color: AarogyaColors.textSecondary),
               ),
               const SizedBox(height: AarogyaSpacing.sm),
-              Text(
-                l10n.publicLandingBody,
-                textAlign: TextAlign.center,
-              ),
+              Text(l10n.publicLandingBody, textAlign: TextAlign.center),
               const SizedBox(height: AarogyaSpacing.lg),
               InfoCard(
                 child: Column(

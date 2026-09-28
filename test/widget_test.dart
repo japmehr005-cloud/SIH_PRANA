@@ -30,8 +30,8 @@ void main() {
     expect(find.text(l10n.appTitle), findsWidgets);
     expect(find.text(l10n.phaseNormal), findsWidgets);
     expect(find.text(l10n.askPranaAssistant), findsWidgets);
-    expect(find.text(l10n.healthNav), findsWidgets);
-    await tester.tap(find.text(l10n.healthNav));
+    expect(find.text(l10n.openHealth), findsWidgets);
+    await tester.tap(find.text(l10n.openHealth));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 50));
     expect(find.text(l10n.baselineNotReady), findsOneWidget);

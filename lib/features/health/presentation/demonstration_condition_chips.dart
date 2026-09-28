@@ -50,10 +50,13 @@ class DemonstrationConditionChips extends ConsumerWidget {
     final restingCsv = condition == DemonstrationCondition.resting
         ? null
         : await bundle.loadString(DemonstrationCondition.resting.assetPath);
-    await ref.read(dependenciesProvider).runtime.applyDemonstrationCondition(
-      condition,
-      csv: csv,
-      restingCsv: restingCsv,
-    );
+    await ref
+        .read(dependenciesProvider)
+        .runtime
+        .applyDemonstrationCondition(
+          condition,
+          csv: csv,
+          restingCsv: restingCsv,
+        );
   }
 }

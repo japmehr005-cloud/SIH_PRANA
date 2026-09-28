@@ -118,9 +118,8 @@ class _AssistantScreenState extends ConsumerState<AssistantScreen> {
                       Text(l10n.pranaAssistant),
                       Text(
                         l10n.assistantHowCanIHelp,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: AarogyaColors.textSecondary,
-                        ),
+                        style: Theme.of(context).textTheme.bodySmall
+                            ?.copyWith(color: AarogyaColors.textSecondary),
                       ),
                     ],
                   ),
@@ -168,6 +167,58 @@ class _AssistantScreenState extends ConsumerState<AssistantScreen> {
                           ),
                         ),
                         const SizedBox(height: AarogyaSpacing.md),
+                        InfoCard(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                l10n.personalBaseline,
+                                style: Theme.of(context).textTheme.titleSmall
+                                    ?.copyWith(fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(height: AarogyaSpacing.sm),
+                              _BaselineRow(
+                                label: l10n.heartRate,
+                                usual: state.baseline?.restingHeartRate == null
+                                    ? l10n.unavailable
+                                    : l10n.usualRange(
+                                        state.baseline!.restingHeartRate!.low
+                                            .toStringAsFixed(0),
+                                        state.baseline!.restingHeartRate!.high
+                                            .toStringAsFixed(0),
+                                      ),
+                                now: state.currentSample?.heartRateBpm == null
+                                    ? l10n.unavailable
+                                    : '${state.currentSample!.heartRateBpm!.toStringAsFixed(0)} ${l10n.bpmUnit}',
+                              ),
+                              _BaselineRow(
+                                label: l10n.bloodOxygen,
+                                usual: state.baseline?.spo2 == null
+                                    ? l10n.unavailable
+                                    : l10n.usualRange(
+                                        state.baseline!.spo2!.low
+                                            .toStringAsFixed(0),
+                                        state.baseline!.spo2!.high
+                                            .toStringAsFixed(0),
+                                      ),
+                                now: state.currentSample?.spo2Percent == null
+                                    ? l10n.unavailable
+                                    : '${state.currentSample!.spo2Percent!.toStringAsFixed(0)} ${l10n.percentUnit}',
+                              ),
+                              if (state.risk != null &&
+                                  !state.risk!.insufficientData)
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: AarogyaSpacing.sm,
+                                  ),
+                                  child: Text(
+                                    '${l10n.comparedWithUsual}: ${riskLabel(l10n, state.visibleRisk)}',
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: AarogyaSpacing.md),
                         Wrap(
                           spacing: AarogyaSpacing.sm,
                           runSpacing: AarogyaSpacing.sm,
@@ -199,7 +250,10 @@ class _AssistantScreenState extends ConsumerState<AssistantScreen> {
                             key: PranaAssistantKeys.iAmSafe,
                             onPressed: () {
                               unawaited(
-                                ref.read(dependenciesProvider).runtime.userIsOk(),
+                                ref
+                                    .read(dependenciesProvider)
+                                    .runtime
+                                    .userIsOk(),
                               );
                             },
                             child: Text(l10n.iAmOk),
@@ -324,6 +378,33 @@ class _AssistantScreenState extends ConsumerState<AssistantScreen> {
       return AarogyaColors.warning;
     }
     return AarogyaColors.safe;
+  }
+}
+
+class _BaselineRow extends StatelessWidget {
+  const _BaselineRow({
+    required this.label,
+    required this.usual,
+    required this.now,
+  });
+
+  final String label;
+  final String usual;
+  final String now;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AarogyaSpacing.sm),
+      child: Row(
+        children: [
+          Expanded(child: Text(label)),
+          Expanded(child: Text('${l10n.baselineTableUsual}: $usual')),
+          Expanded(child: Text('${l10n.baselineTableNow}: $now')),
+        ],
+      ),
+    );
   }
 }
 

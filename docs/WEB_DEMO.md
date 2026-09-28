@@ -47,13 +47,15 @@ These implement the same contracts as future mobile adapters. Inference stays in
 
 ## Local and Vercel URLs
 
-Flutter Web in this project uses hash routes:
+Hash routes:
 
 - Home: `/#/`
 - Health: `/#/health`
 - Assistant: `/#/assistant`
+- Disaster: `/#/disaster`
 - Demo: `/#/demo`
-- Rescue: `/#/rescue`
+- Survival / Rescue: `/#/rescue`
+- Devices: `/#/devices`
 - Settings: `/#/settings`
 - Account: `/#/account`
 - Sign in: `/#/login`
